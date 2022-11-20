@@ -10,44 +10,50 @@
     <% if(alarmStatus == "upcoming") { %>
         <meta http-equiv="refresh" content="30">
     <% } %>
+    <link rel="icon" href="./images/favicon.ico">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="./stylesheets/admin_style.css">
 </head>
 <body>
-    <h1>Riadiaci panel</h1>
-    <div id="addAst">
-        <h2>Pridať asteroid</h2>
-        <form action="/admin/add" method="post" autocomplete="off">
-            <div>
-                Vyradí systémy na:
-                <input type="text" name=time placeholder="HH:MM:SS">
-            </div>
-            <div>
-                Správa pri náraze:
-                <textarea required name="message" id="" cols="50" rows="10">
+    <div class="all">
+
+        <h1 class="center">Riadiaci panel</h1>
+        <div id="addAst">
+            <h2>Pridať asteroid</h2>
+            <form action="/admin/add" method="post" autocomplete="off">
+                <div class="line space_out">
+                    <div class="label">Vyradí systémy na:</div>
+                    <input class="fluid" required type="text" name=time placeholder="HH:MM:SS">
+                </div>
+                <div class="space_out">
+                    <div class="label">Správa pri náraze:</div>
+                    <textarea class="fluid" required name="message" id="" cols="50" rows="10">
 Asteroid zasáhl loď a poškodil jeji plášť! 
 Přesuňte se VŠICHNI do hlavního modulu, hermeticky zamkněte dveře a vyčkejte, dokud trhlinu autonomní systém neopraví. 
 V hlavním modulu vyčkejte po celou dobu alarmu.
-                </textarea>
+                    </textarea>
+                </div>
+                <button class="fluid">Odoslať</button>
+            </form>
+        </div>
+        <div id="listAst">
+            <div class="flex">
+                <h2 class="inline">Status</h2>
+                <form class="inline" action="/admin/reset" method="post">
+                    <button>Reset</button>
+                </form>
             </div>
-            <button>Odoslať</button>
-        </form>
-    </div>
-    <div id="listAst">
-        <h2>Status</h2>
-        <form action="/admin/reset" method="post">
-            <button>Reset</button>
-        </form>
-        <!-- here -->
-        <% if(alarmStatus == "active") { %>
-            <h3>Alarm je aktívny</h3>
-            <p>Odpočet skončí o: <%= timeRem %></p>
-        <% } %>
-        <% if(alarmStatus == "upcoming") { %>
-            <h3>Alarm sa spustí o 30 sekúnd</h3>
-        <% } %>
-        <% if(alarmStatus == "none") { %>
-            <h3>Momentálne sa nič nedeje</h3>
-        <% } %>
+            <% if(alarmStatus == "active") { %>
+                <h3 class="center">Alarm je aktívny</h3>
+                <p class="center">Odpočet skončí o: <%= timeRem %></p>
+            <% } %>
+            <% if(alarmStatus == "upcoming") { %>
+                <h3 class="center">Alarm sa spustí o 30 sekúnd</h3>
+            <% } %>
+            <% if(alarmStatus == "none") { %>
+                <h3 class="center">Momentálne sa nič nedeje</h3>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>
