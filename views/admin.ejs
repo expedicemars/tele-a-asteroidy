@@ -10,9 +10,9 @@
     <h1>Riadiaci panel</h1>
     <div id="addAst">
         <h2>Pridať asteroid</h2>
-        <form action="/admin" method="post" autocomplete="off">
+        <form action="/admin/add" method="post" autocomplete="off">
             <div>
-                Narazí o:
+                Vyradí systémy na:
                 <input type="text" name=time placeholder="HH:MM:SS">
             </div>
             <div>
@@ -24,6 +24,9 @@
     </div>
     <div id="listAst">
         <h2>Zoznam asteroidov</h2>
+        <form action="/admin/reset" method="post">
+            <button>Reset</button>
+        </form>
         <% asteroids.forEach((asteroid) => { %>
             <% if(asteroid.nearest == 0) { %>
                 <p><%= asteroid %></p>

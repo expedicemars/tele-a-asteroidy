@@ -4,7 +4,7 @@ const express    = require("express"),
     //   mongoose   = require("mongoose")
     //   Telemetry  = require("./models/tele.js"),
     //   Asteroids  = require("./models/asteroids.js")
-const {/*seedDB,*/ seedAst, genAst, errors, simulateAst, returnAst} = require("./seeds.js")
+const {/*seedDB,*/ seedAst, genAst, errors, simulateAst, returnAst, resetAst} = require("./seeds.js")
 
 // mongoose.connect("mongodb://localhost:27017/simulation", {useNewUrlParser: true})
 app.use(express.static(__dirname + "/public"))
@@ -38,11 +38,12 @@ const timer = () => {
         }
     }, 1000)
 }
-app.post("/admin", (req, res) => {
+var hitTimeout
+app.post("/admin/add", (req, res) => {
     const time = req.body.time
     message = req.body.message
     genAst(0)
-    setTimeout(() => {
+    hitTimeout = setTimeout(() => {
         isAlarm = true
         timeRem = Number(time.substring(0, 2))*3600+Number(time.substring(3,5))*60+Number(time.substring(6))
         setTimeout(() => {
@@ -52,7 +53,14 @@ app.post("/admin", (req, res) => {
     }, 30000)
     res.redirect("/admin")
 })
-//add asteroid to database
+
+app.post("/admin/reset", (req, res) => {
+    isAlarm = false
+    timeRem = 0
+    resetAst()
+    clearTimeout(hitTimeout)
+    res.redirect("/admin")
+})
 
 // app.get("/tele", (req, res) => {
 //     if(errNo == -1) {

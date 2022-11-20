@@ -167,6 +167,13 @@ const simulateAst = () => {
 const returnAst = () => {
     return astData
 }
+const resetAst = () => {
+    for(let i = 0; i < astData.length; i++) {
+        if(astData[i].nearest == 0) {
+            astData.splice(i, 1)
+        }
+    }
+}
 
 module.exports = {
     //seedDB,
@@ -174,5 +181,6 @@ module.exports = {
     genAst,
     errors,
     simulateAst,
-    returnAst
+    returnAst,
+    resetAst
 }
