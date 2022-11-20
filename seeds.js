@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const Telemetry = require("./models/tele.js")
+// const mongoose = require("mongoose")
+// const Telemetry = require("./models/tele.js")
 // const Asteroids = require("./models/asteroids.js")
 
 const random = (min, max) => {
@@ -32,20 +32,20 @@ const dataGen = () => {return [
     {num: 23, name:"He left dP/dt", value: random(0, 29).toString()},
 ]}
 
-const seedDB = () => {
-    let data = dataGen()
-    Telemetry.deleteMany({}, (err) => {
-        if(err) { console.log(err) }
-        else {
-            data.forEach((seed) => {
-                Telemetry.create(seed, (err, value) => {
-                    if(err) { console.log(err) }
-                })
-            })
-        }
-    })
-    console.log("Tele seeding successful")
-}
+// const seedDB = () => {
+//     let data = dataGen()
+//     Telemetry.deleteMany({}, (err) => {
+//         if(err) { console.log(err) }
+//         else {
+//             data.forEach((seed) => {
+//                 Telemetry.create(seed, (err, value) => {
+//                     if(err) { console.log(err) }
+//                 })
+//             })
+//         }
+//     })
+//     console.log("Tele seeding successful")
+// }
 
 const errors = [ //probably will be changed to method
     {
@@ -169,7 +169,7 @@ const returnAst = () => {
 }
 
 module.exports = {
-    seedDB,
+    //seedDB,
     seedAst,
     genAst,
     errors,

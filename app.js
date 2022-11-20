@@ -1,12 +1,12 @@
 const express    = require("express"),
       app        = express(),
       bodyParser = require("body-parser")
-      mongoose   = require("mongoose")
-      Telemetry  = require("./models/tele.js"),
-      Asteroids  = require("./models/asteroids.js")
-const {seedDB, seedAst, genAst, errors, simulateAst, returnAst} = require("./seeds.js")
+    //   mongoose   = require("mongoose")
+    //   Telemetry  = require("./models/tele.js"),
+    //   Asteroids  = require("./models/asteroids.js")
+const {/*seedDB,*/ seedAst, genAst, errors, simulateAst, returnAst} = require("./seeds.js")
 
-mongoose.connect("mongodb://localhost:27017/simulation", {useNewUrlParser: true})
+// mongoose.connect("mongodb://localhost:27017/simulation", {useNewUrlParser: true})
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.set("view engine", "ejs")
@@ -54,46 +54,46 @@ app.post("/admin", (req, res) => {
 })
 //add asteroid to database
 
-app.get("/tele", (req, res) => {
-    if(errNo == -1) {
-        seedDB()
-        teleTimeout(12000) //60000*(Math.random()*90+30)
-    }
-    Telemetry.find({}).sort("num").exec((err, data) => {
-        if(err) {console.log(err)}
-        else {
-            console.log(data)
-            res.render("tele", {
-            data: data, 
-            errNums: (errNo==-1?[]:errors[errNo].num)
-        })}
-    })
-})
+// app.get("/tele", (req, res) => {
+//     if(errNo == -1) {
+//         seedDB()
+//         teleTimeout(12000) //60000*(Math.random()*90+30)
+//     }
+//     Telemetry.find({}).sort("num").exec((err, data) => {
+//         if(err) {console.log(err)}
+//         else {
+//             console.log(data)
+//             res.render("tele", {
+//             data: data, 
+//             errNums: (errNo==-1?[]:errors[errNo].num)
+//         })}
+//     })
+// })
 //display the data, allow them to deal with the warnings
 
 var errNo = -1
 var isTimeout = false
-const teleTimeout = (time) => {
-    if(isTimeout == false) {
-        setTimeout(() => {
-            isTimeout = false
+// const teleTimeout = (time) => {
+//     if(isTimeout == false) {
+//         setTimeout(() => {
+//             isTimeout = false
 
-            errNo = Math.floor(Math.random()*errors.length) //determine error number
-            //loop through numbers, change DB vals to val, change colors to red in DOM
-            for(let i = 0; i < errors[errNo].num.length; i++) {
-                Telemetry.findOneAndUpdate(
-                    {num: errors[errNo].num[i]},
-                    {value: errors[errNo].val[i].toString()},
-                    (err) => { console.log(err?err:"Error introduced") })
-            }
-            //stop seeding till fixed
-            //display the form (DOM)
-            //
-            console.log(errNo)
-        }, time)
-        isTimeout = true
-    }
-}
+//             errNo = Math.floor(Math.random()*errors.length) //determine error number
+//             //loop through numbers, change DB vals to val, change colors to red in DOM
+//             for(let i = 0; i < errors[errNo].num.length; i++) {
+//                 Telemetry.findOneAndUpdate(
+//                     {num: errors[errNo].num[i]},
+//                     {value: errors[errNo].val[i].toString()},
+//                     (err) => { console.log(err?err:"Error introduced") })
+//             }
+//             //stop seeding till fixed
+//             //display the form (DOM)
+//             //
+//             console.log(errNo)
+//         }, time)
+//         isTimeout = true
+//     }
+// }
 
 
 app.post("/tele", (req, res) => {
