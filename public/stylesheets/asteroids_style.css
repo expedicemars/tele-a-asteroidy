@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    color: #b3b3b3;
+    padding: 3em
+}
+
+.row {
+    width: 50%;
+    float: left;
+
+}
+
+img {
+    width: 80%;
+}
+.image {
+    display: flex;
+    justify-content: center;
+}

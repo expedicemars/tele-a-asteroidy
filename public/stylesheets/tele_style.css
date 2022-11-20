@@ -1,0 +1,39 @@
+body {
+    background-color: black;
+    color: #00d900;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 3em;
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+p {
+    margin-bottom: 2em;
+}
+
+.column {
+    float: left;
+    width: 33%;
+}
+.col {
+    float: left;
+    width: 50%;
+}
+
+
+.warning {
+    color: #da0000;
+}
+
+img {
+    filter: brightness(0) invert(1);
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
