@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: #000800;
     color: #b3b3b3;
     padding: 3em;
 }
@@ -19,18 +19,18 @@ body {
 
 }
 
-img {
+.image img {
     width: 80%;
 }
 .image {
     display: flex;
     justify-content: center;
     padding: 5em;
-    padding-top: 0
+    padding-top: 1em
 }
 #radar {
-    padding-top: 5%;
-    padding-bottom: 5%
+    padding-top: 8%;
+    padding-bottom: 4%;
 }
 
 /* #data {
@@ -49,6 +49,8 @@ img {
     justify-content: space-around;
     padding-bottom: 1em;
     font-size: 2.5vh;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-bottom: 0;
 }
 
 #warning {
