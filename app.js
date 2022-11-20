@@ -10,7 +10,7 @@ mongoose.connect("mongodb://localhost:27017/simulation", {useNewUrlParser: true}
 app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.set("view engine", "ejs")
-seedDB()
+//seedDB()
 seedAst()
 
 app.get("/admin", (req, res) => {
