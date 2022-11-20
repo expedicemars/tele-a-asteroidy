@@ -7,7 +7,18 @@
     <title>Asteroids</title>
     <link rel="stylesheet" href="/stylesheets/asteroids_style.css">
     <meta http-equiv="refresh" content="1">
-</head>
+    <% if(alarmStatus == "active") { %>
+        <style>
+            body {
+                background-image: url("./images/warning.jpg");
+                background-size: 100vw 100vh;
+                background-repeat: no-repeat;
+            }
+        </style>
+    <% } %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet"></head>
 <body>
     <% if(alarmStatus == "none" || alarmStatus == "upcoming") { %>
     <div id="radar" class="row">
@@ -19,16 +30,16 @@
         </div>
         <div id="asteroid-list">
             <% asteroids.forEach((asteroid) => { %>
-                <div>
-                    <p>Distance: <%= Math.floor(asteroid.dist) %> m</p>
-                    <p>Energy: <%= asteroid.energy %> mJ</p>
-                </div>
+                <p class="parampara"><span class="params">Distance: <%= Math.floor(asteroid.dist) %> m</span><span class="params">Energy: <%= asteroid.energy %> mJ</span></p>
             <% }) %>
         </div>
     </div>
     <% } else { %>
-        <p>Message: <%= message %></p>
-        <p>Time remaining: <%= timeRem %></p>
+    <div id="warning">
+        <h1 id="title">Warning!</h1>
+        <h2 id="time"><%= Math.floor(timeRem/3600) %>h <%= Math.floor(timeRem%3600/60) %>min <%= timeRem%60 %>s</p>
+        <h3 id="message"><%= message %></p>
+    </div>
     <% } %>
 </body>
 </html>

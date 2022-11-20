@@ -48,7 +48,7 @@ app.post("/admin/add", (req, res) => {
         alarmStatus = "active"
         timeRem = Number(time.substring(0, 2))*3600+Number(time.substring(3,5))*60+Number(time.substring(6))
         setTimeout(() => {
-            alarmStatus = none
+            alarmStatus = "none"
         }, 1000*(timeRem))
         timer()
     }, 30000)

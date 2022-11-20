@@ -1,7 +1,16 @@
+@font-face {
+    font-family: 'rubik-glitch';
+    src: url("../fonts/RubikGlitch-Regular.ttf");
+}
+@font-face {
+    font-family: 'syne-mono';
+    src: url("../fonts/SyneMono-Regular.ttf")
+}
+
 body {
     background-color: black;
     color: #b3b3b3;
-    padding: 3em
+    padding: 3em;
 }
 
 .row {
@@ -16,4 +25,43 @@ img {
 .image {
     display: flex;
     justify-content: center;
+    padding: 5em;
+    padding-top: 0
+}
+#radar {
+    padding-top: 5%;
+    padding-bottom: 5%
+}
+
+/* #data {
+    display: flex;
+    justify-content: center;
+} */
+#asteroid-list {
+    width: 50%;
+    margin-right: 25%;
+    margin-left: 25%;
+    font-size: 1.1rem;
+}
+.parampara {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1em;
+}
+
+#warning {
+    font-family: 'syne-mono', sans-serif;
+    text-align: center;
+}
+#title {
+    font-size: 80px;
+}
+#time {
+    margin-top: 2em;
+    font-size: 40px
+}
+#message {
+    margin-top: 3em;
+    font-size: 30px;
 }
