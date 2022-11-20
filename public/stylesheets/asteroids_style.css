@@ -29,8 +29,12 @@ body {
     padding-top: 1em
 }
 #radar {
-    padding-top: 8%;
+    padding-top: 12%;
     padding-bottom: 4%;
+}
+
+#data {
+    padding-top: 5%;
 }
 
 /* #data {
