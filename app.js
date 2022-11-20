@@ -168,6 +168,6 @@ app.get("/asteroids", (req, res) => {
 //after refresh, data of asteroids to hit ship need to be kept
 //should actively pull the data from backend
 
-app.listen(3000, function() {
-	console.log("Server running at 3000")
+app.listen(8888, function() {
+	console.log("Server running at 8888")
 })
