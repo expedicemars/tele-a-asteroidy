@@ -13,12 +13,15 @@ app.set("view engine", "ejs")
 //seedDB()
 seedAst()
 
+var alarmStatus = "none"
+var timeRem = 0
+var message = ""
 app.get("/admin", (req, res) => {
     // Asteroids.find({}, (err, data) => {
     //     if(err) { console.log(err) }
     //     else { res.render("admin", {asteroids: data}) }
     // })
-    res.render("admin", {asteroids: returnAst()})
+    res.render("admin", {asteroids: returnAst(), alarmStatus: alarmStatus, timeRem: timeRem})
 })
 //generate asteroid to approach the ship in ...
 //choose the message for when hit by an asteroid
@@ -27,9 +30,6 @@ app.get("/admin", (req, res) => {
 //should be protected from access by the crew
 
 //display asteroids
-var isAlarm = false
-var timeRem = 0
-var message = ""
 const timer = () => {
     let interval = setInterval(() => {
         timeRem--
@@ -43,11 +43,12 @@ app.post("/admin/add", (req, res) => {
     const time = req.body.time
     message = req.body.message
     genAst(0)
+    alarmStatus = "upcoming"
     hitTimeout = setTimeout(() => {
-        isAlarm = true
+        alarmStatus = "active"
         timeRem = Number(time.substring(0, 2))*3600+Number(time.substring(3,5))*60+Number(time.substring(6))
         setTimeout(() => {
-            isAlarm = false
+            alarmStatus = none
         }, 1000*(timeRem))
         timer()
     }, 30000)
@@ -55,7 +56,7 @@ app.post("/admin/add", (req, res) => {
 })
 
 app.post("/admin/reset", (req, res) => {
-    isAlarm = false
+    alarmStatus = "none"
     timeRem = 0
     resetAst()
     clearTimeout(hitTimeout)
@@ -151,7 +152,7 @@ app.get("/asteroids", (req, res) => {
     //     else { res.render("asteroids", {asteroids: data}) }
     // })
     console.log(returnAst())
-    res.render("asteroids", {asteroids: returnAst(), isAlarm: isAlarm, timeRem: timeRem, message: message})
+    res.render("asteroids", {asteroids: returnAst(), alarmStatus: alarmStatus, timeRem: timeRem, message: message})
 })
 
 // var isInterval = false

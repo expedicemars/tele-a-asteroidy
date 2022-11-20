@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <% if(alarmStatus == "active") { %>
+        <meta http-equiv="refresh" content="1">
+    <% } %>
+    <% if(alarmStatus == "upcoming") { %>
+        <meta http-equiv="refresh" content="30">
+    <% } %>
     <title>Admin Panel</title>
 </head>
 <body>
@@ -23,15 +29,21 @@
         </form>
     </div>
     <div id="listAst">
-        <h2>Zoznam asteroidov</h2>
+        <h2>Status</h2>
         <form action="/admin/reset" method="post">
             <button>Reset</button>
         </form>
-        <% asteroids.forEach((asteroid) => { %>
-            <% if(asteroid.nearest == 0) { %>
-                <p><%= asteroid %></p>
-            <% } %>
-        <% }) %>
+        <!-- here -->
+        <% if(alarmStatus == "active") { %>
+            <h3>Alarm je aktívny</h3>
+            <p>Odpočet skončí o: <%= timeRem %></p>
+        <% } %>
+        <% if(alarmStatus == "upcoming") { %>
+            <h3>Alarm sa spustí o 30 sekúnd</h3>
+        <% } %>
+        <% if(alarmStatus == "none") { %>
+            <h3>Momentálne sa nič nedeje</h3>
+        <% } %>
     </div>
 </body>
 </html>

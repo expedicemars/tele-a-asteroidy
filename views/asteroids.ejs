@@ -9,7 +9,7 @@
     <meta http-equiv="refresh" content="1">
 </head>
 <body>
-    <% if(!isAlarm) { %>
+    <% if(alarmStatus == "none" || alarmStatus == "upcoming") { %>
     <div id="radar" class="row">
         <img src="/images/radar.gif" alt="radar">
     </div>
