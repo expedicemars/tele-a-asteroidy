@@ -4,7 +4,7 @@
 
 - sucasna verzia ma funkcne asteroidy, a napisany zaklad pre telemetriu
 - v buducnosti by sa bud mohol dopisat kod pre telemetriu, alebo by sa aplikacia mohla prepisat do Reactu, co by zlepsilo celkovu funkcionalitu a praktickost
-- asteroidy momentalne nevydavaju zvuky
+- asteroidy momentalne nevydavaju zvuky, sound files su v public/sounds, na simulacii sa pustali manualne
 
 ## Postup pre spustenie
 
